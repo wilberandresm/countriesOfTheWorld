@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styles: [`
+  .container-title {
+    text-align: center;
+    h1 {
+      font-size: xxx-large;
+    }
+  }
+  `]
 })
 export class AppComponent {
-  title = 'countriesOfTheWorld';
+  filterValue: string;
+  region: string;
+
+
 }

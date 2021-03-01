@@ -1,0 +1,45 @@
+<div class="columns is-desktop dashboard">
+    <ng-container *ngIf="loading;else showCountries">
+        <progress class="progress is-small is-primary" max="100">15%</progress>
+    </ng-container>
+    <ng-template #showCountries>
+        <ng-container *ngIf="countriesForShow.length;else emptyResult">
+            <app-cards *ngFor="let item of countriesForShow" class="column is-3" (click)="openModal(item)">
+                <strong>{{item.name}}</strong>
+                <img class="flag" src="{{item.flag}}">
+            </app-cards>
+        </ng-container>
+        <ng-template #emptyResult>
+            <div class="container">
+                <div class="notification is-primary">
+                    <strong>No hay resultados</strong> para la busqueda.
+                </div>
+            </div>
+        </ng-template>
+    </ng-template>
+</div>
+
+<div class="modal" [ngClass]="{'is-active': open}">
+    <div class="modal-background" (click)="toggleModal()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title title">{{countryModal?.name}}</p>
+            <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+        </header>
+        <section class="modal-card-body inside-body">
+            <div class="information column is-6">
+                <p class="subtitle">Region: {{countryModal?.region}}</p>
+                <p class="subtitle">Población: {{countryModal?.population}}</p>
+                <p class="subtitle">Capital: {{countryModal?.capital}}</p>
+                <p class="subtitle">Moneda: {{countryModal?.currencies[0].name}}</p>
+                <p class="subtitle">Países fronterizos:{{listBorders}}
+                    <ng-container *ngIf="!listBorders">no tiene</ng-container>
+                </p>
+            </div>
+            <div class="column is-6">
+                <img class="flag_modal" src="{{countryModal?.flag}}">
+            </div>
+
+        </section>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="field search columns">
+    <p class="control has-icons-left has-icons-right column is-two-thirds left-search">
+        <input class="input" type="text" placeholder="Buscador global" (input)="search.emit(input.value)" #input>
+        <span class="icon is-small is-left">
+            <i class="fas fa-search"></i>
+        </span>
+        <span class="icon is-small is-right" (click)="eraserSearch()">
+            <i class="fas fa-eraser clear"></i>
+        </span>
+    </p>
+    <div class="control has-icons-left filter">
+        <div class="select">
+            <select [(ngModel)]="selected" (change)="region.emit(selected)">
+                <option selected disabled value="">Región</option>
+                <option value="all">Todas</option>
+                <option value="Africa">Africa</option>
+                <option value="Americas">Americas</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europa</option>
+                <option value="Oceania">Oceania</option>
+            </select>
+        </div>
+        <div class="icon is-small is-left">
+            <i class="fas fa-globe"></i>
+        </div>
+    </div>
+</div>
