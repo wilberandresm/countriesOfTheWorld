@@ -79,11 +79,10 @@ export class CountriesComponent implements OnInit, OnChanges {
   }
   add() {
     if (this.favourite.length) {
-      this.favourite.forEach(value => {
-        if (value.numericCode !== this.countryModal.numericCode) {
-          this.favourite.push(this.countryModal)
-        }
-      })
+      const elementExist = this.favourite.find(value => value.numericCode === this.countryModal.numericCode);
+      if (!elementExist) {
+        this.favourite.push(this.countryModal)
+      }
     } else {
       this.favourite.push(this.countryModal)
     }
