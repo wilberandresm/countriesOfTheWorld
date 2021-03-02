@@ -24,4 +24,32 @@
             <i class="fas fa-globe"></i>
         </div>
     </div>
+    <button class="button is-info is-outlined" (click)="openModal()"> favoritos</button>
+</div>
+
+<div class="modal" [ngClass]="{'is-active': open}">
+    <div class="modal-background" (click)="toggleModal()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title title">Favoritos</p>
+            <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+        </header>
+        <section class="modal-card-body inside-body">
+            <div class="information columns">
+                <app-cards *ngFor="let item of country;let i=index" class="column is-6">
+                    <div class="card-favourite">
+                        <img class="flag" src="{{item.flag}}">
+                        <strong>{{item.name}}</strong>
+                    </div>
+                    <button class="button is-danger is-outlined" (click)="delete(i)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </app-cards>
+                <ng-container *ngIf="!country.length">
+                    aún no tienes favoritos :(
+                </ng-container>
+
+            </div>
+        </section>
+    </div>
 </div>

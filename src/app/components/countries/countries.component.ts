@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ICountry } from '../../schema/country/country.interface'
 import { AppComponentService } from '../../services/app.component.service';
 
@@ -17,8 +18,8 @@ export class CountriesComponent implements OnInit, OnChanges {
   listBorders: string;
   countryModal: any;
   loading = false;
+  favourite = [];
   open: boolean = false;
-
 
   constructor(
     private service: AppComponentService,
@@ -75,6 +76,19 @@ export class CountriesComponent implements OnInit, OnChanges {
   toggleModal() {
     this.open = false;
     this.borders = [];
+  }
+  add() {
+    if (this.favourite.length) {
+      this.favourite.forEach(value => {
+        if (value.numericCode !== this.countryModal.numericCode) {
+          this.favourite.push(this.countryModal)
+        }
+      })
+    } else {
+      this.favourite.push(this.countryModal)
+    }
+
+    this.service.favoritesList.next(this.favourite);
   }
 
 }

@@ -23,7 +23,8 @@
     <div class="modal-background" (click)="toggleModal()"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title title">{{countryModal?.name}}</p>
+            <p class="modal-card-title title">{{countryModal?.name}} <button class="button is-info is-outlined"
+                    (click)="add()"><i class="fas fa-heart"></i></button></p>
             <button class="delete" aria-label="close" (click)="toggleModal()"></button>
         </header>
         <section class="modal-card-body inside-body">

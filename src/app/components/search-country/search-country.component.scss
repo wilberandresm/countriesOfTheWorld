@@ -1,6 +1,8 @@
 .search {
   padding: 0 2.6rem;
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
 }
 .input {
   border-radius: 21px;
@@ -20,4 +22,15 @@
 .filter {
   display: flex;
   align-items: center;
+  margin-right: 1rem;
+}
+.title {
+  margin-bottom: 0;
+}
+.card-favourite {
+  display: flex;
+  align-items: center;
+  .flag {
+    margin-right: 0.5rem;
+  }
 }
